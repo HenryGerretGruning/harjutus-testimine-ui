@@ -8,7 +8,7 @@ context('Todo List', () => {
     it('interact with list', () => {
         cy.get('input')
             .type('Lorem ipsum').should('have.value', 'Lorem ipsum')
-        
+
         cy.get('button').click().then(() => {
             cy.get('input').should('have.value', '')
             cy.get('ul').find('li').should('have.length', 1)
@@ -17,6 +17,27 @@ context('Todo List', () => {
                 cy.get('ul').find('li').should('have.length', 0)
             })
         })
+    });
+
+    it('Delete Rows', () => {
+        cy.get('input')
+            .type('Lorem ipsum').should('have.value', 'Lorem ipsum')
+
+        cy.get('button').first().click()
+
+
+        cy.get('input')
+            .type('Lorem ipsum').should('have.value', 'Lorem ipsum')
+
+        cy.get('button').first().click()
+
+
+        cy.get('input')
+            .type('Lorem ipsum').should('have.value', 'Lorem ipsum')
+
+        cy.get('button').first().click()
+        cy.get('button').last().click()
+        cy.get('button').last().click()
     });
 })
   
